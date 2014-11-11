@@ -1,0 +1,95 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Ubik text field widget
+
+##### Example
+
+    <ubik-textfield label="Name" value="Ernesto Roldán García"></ubik-textfield>
+
+@element ubik-textfield
+@status alpha
+@homepage http://ubikee.github.io/ubik-textfield
+-->
+
+<link rel="import" href="ubik-formfield.html">
+<polymer-element name="ubik-textfield" attributes="label, value, placeholder, editable, password, multiline, required">
+    <template>
+        
+        <link rel="stylesheet" type="text/css" href="./ubik-textfield.css">
+        
+        <ubik-formfield label="{{label}}" editable="{{editable}}" value="{{value}}" required="{{required}}" valid="{{valid}}">
+            <template if="{{multiline | isTextArea}}">
+                <textarea 
+                    id="field" 
+                    placeholder="{{placeholder}}" 
+                    value="{{value}}" 
+                    on-blur="{{onBlur}}"
+                    on-keyup="{{onKey}}"
+                    invalid?={{!valid}}></textarea>
+            </template>
+            <template if="{{multiline | isInput}}">
+                <input 
+                    id="field" 
+                    type="{{password | isPassword}}" 
+                    placeholder="{{placeholder}}" 
+                    value="{{value}}"
+                    on-blur="{{onBlur}}"
+                    on-keyup="{{onKey}}"
+                    invalid?={{!valid}}></div>
+            </template>
+        </ubik-formfield>
+    </template>
+
+    <script>
+        Polymer({
+            label: "",
+            value: "",
+            placeholder: "",
+            editable: true,
+            required: false,
+            valid: true,
+            ready: function () {
+                this.validate();
+            },
+            isInput: function () {
+                return this.multiline === undefined;
+            },
+            isTextArea: function () {
+                return this.multiline !== undefined;
+            },
+            isPassword: function () {
+                return this.password !== undefined ? 'password' : 'text';
+            },
+            isRequired: function () {
+                return this.required;
+            },
+            isEmpty: function () {
+                return this.value === "";
+            },
+            isValid: function () {
+                return this.valid;
+            },
+            onKey: function () {
+                //TODO
+            },
+            onBlur: function () {
+                //TODO
+            },
+            valueChanged: function (oldVal, newVal) {
+                this.validate();
+            },
+            validate: function () {
+                var result = true;
+
+                if (this.required && this.isEmpty())
+                    result = false;
+
+                //TODO : more validations
+
+                this.valid = result;
+                return this.valid;
+            }
+        });
+    </script>
+</polymer-element>

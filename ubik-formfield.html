@@ -1,0 +1,31 @@
+<polymer-element name="ubik-formfield" attributes="label, editable, value, required, valid">
+    <template>
+
+		<link rel="stylesheet" type="text/css" href="ubik-formfield.css">
+
+        <section horizontal layout center>
+
+            <label id="label" flex three horizontal layout center end-justified>
+                <template if="{{required && !valid}}"><span style="color:red"><i class="fa fa-warning fa-sm"></i>&nbsp;</span></template>
+                {{label}}
+            </label>
+
+            <template if="{{editable}}">
+                <div flex nine>
+                    <content></content>
+                </div>
+            </template>
+
+            <template if="{{!editable}}">
+                <div flex nine>{{value}}</div>
+            </template>
+
+        </section>
+
+    </template>
+    <script>
+        Polymer({
+            editable: true
+        });
+    </script>
+</polymer-element>
