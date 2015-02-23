@@ -1,0 +1,17 @@
+:host {
+	display: block;
+    border : dashed 0px;
+}
+
+section {
+	display: block;
+    border : solid 0px;
+    padding : 5px;
+    margin-right : 5px;
+    height : 35px;
+}
+
+label {
+	margin-right : 10px;
+    color:rgba(0,0,0,0.54)
+}

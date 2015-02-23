@@ -1,16 +1,26 @@
 {
-  "name": "ubik-textfield",
-  "version": "0.0.1",
+  "name": "seed-element",
+  "version": "0.0.0",
+  "authors": [
+    "Ernesto Roldan Garcia <jeroldan@gmail.com>"
+  ],
+  "description": "Textfield",
   "keywords": [
-    "seed",
-    "polymer",
-    "web-components"
+    "web-component",
+    "web-components",
+    "polymer"
   ],
   "main": "ubik-textfield.html",
+  "license": "MIT",
+  "homepage": "https://github.com/<USERNAME>/ubik-textfield/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.4.0"
+    "polymer": "Polymer/polymer#^0.5.4"
   },
   "devDependencies": {
-    "polymer-test-tools": "Polymer/polymer-test-tools#^0.4.0"
+    "web-component-tester": "*"
   }
 }

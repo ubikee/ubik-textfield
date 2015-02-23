@@ -1,19 +1,42 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
 <!doctype html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <title>ubik-textfield Demo</title>
 
-  <script src="../platform/platform.js"></script>
+  <script src="../webcomponentsjs/webcomponents.min.js"></script>
   <link rel="import" href="ubik-textfield.html">
 
 </head>
 <body unresolved>
 
-  <p>An `ubik-textfield` looks like this:</p>
+  <template id="context" is="auto-binding">
 
-	<ubik-textfield label="Name" placeholder="type your name"></ubik-textfield>
-	<ubik-textfield label="Name" value="Ernesto Roldan Garcia"></ubik-textfield>
+    <p>An example of using <code>&lt;ubik-textfield&gt;</code>:</p>
 
+    <ubik-textfield label="Normal" placeholder="Default textfield"></ubik-textfield>
+
+    <ubik-textfield label="Date Field" date value="{{date}}" editable="true"></ubik-textfield>
+
+    <ubik-textfield label="Time Field" time value="{{date}}" editable="false"></ubik-textfield>
+
+    <ubik-textfield label="Date/Time Field" date time value="{{date}}" editable="false"></ubik-textfield>
+
+    <ubik-textfield label="No Editable" value="You cannot edit me" editable="false"></ubik-textfield>
+ 
+  </template>
+  <script>
+    var context = document.querySelector('#context');
+    context.date = new Date().valueOf();
+  </script>
 </body>
 </html>

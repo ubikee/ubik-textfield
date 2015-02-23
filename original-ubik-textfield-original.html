@@ -13,12 +13,12 @@ Ubik text field widget
 -->
 
 <link rel="import" href="ubik-formfield.html">
-<polymer-element name="ubik-textfield" attributes="label, value, placeholder, editable, password, date, time, multiline, required, small ">
+<polymer-element name="ubik-textfield" attributes="label, value, placeholder, editable, password, multiline, required">
     <template>
-
+        
         <link rel="stylesheet" type="text/css" href="./ubik-textfield.css">
-
-        <ubik-formfield label="{{label}}" editable="{{editable}}" value="{{value | dateFormat}}" required="{{required}}" valid="{{valid}}">
+        
+        <ubik-formfield label="{{label}}" editable="{{editable}}" value="{{value}}" required="{{required}}" valid="{{valid}}">
             <template if="{{multiline | isTextArea}}">
                 <textarea 
                     id="field" 
@@ -33,27 +33,22 @@ Ubik text field widget
                     id="field" 
                     type="{{password | isPassword}}" 
                     placeholder="{{placeholder}}" 
-                    value="{{value | dateFormat}}"
+                    value="{{value}}"
                     on-blur="{{onBlur}}"
                     on-keyup="{{onKey}}"
-                    invalid?={{!valid}}
-                    small?={{small}}>
+                    invalid?={{!valid}}></div>
             </template>
         </ubik-formfield>
-
     </template>
 
     <script>
-        Polymer({            
+        Polymer({
             label: "",
             value: "",
             placeholder: "",
             editable: true,
             required: false,
             valid: true,
-            small: false,
-            date: false,
-            time:false,
             ready: function () {
                 this.validate();
             },
@@ -75,12 +70,6 @@ Ubik text field widget
             isValid: function () {
                 return this.valid;
             },
-            isDate: function () {
-                return this.date;
-            },
-            isTime: function () {
-                return this.time;
-            },
             onKey: function () {
                 //TODO
             },
@@ -100,22 +89,6 @@ Ubik text field widget
 
                 this.valid = result;
                 return this.valid;
-            },
-            dateFormat: function (value) {
-
-                var date = '';
-
-                if (!this.isDate() && !this.isTime())
-                    return value;
-
-                if (this.isDate()) 
-                    date += new Date(parseInt(value)).toLocaleDateString('es-ES'); 
-
-                if (this.isTime())
-                    date += new Date(parseInt(value)).toLocaleTimeString('es-ES');
-
-                console.log(date)
-                return date;
             }
         });
     </script>
